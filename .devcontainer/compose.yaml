@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      # node_modules はバインドマウントから切り離し、named volume に置く。
+      # Windows ホストのファイルシステム経由だと I/O が遅く、依存パッケージの
+      # ネイティブバイナリもホスト OS 向けのものと混ざるため。
+      - node_modules:/workspace/node_modules
+    ports:
+      - '3000:3000'
+    environment:
+      # Windows ホストのバインドマウントではファイル変更イベントが
+      # コンテナ内に伝播しないため、Vite の watch をポーリングに切り替える。
+      VITE_USE_POLLING: 'true'
+    command: sleep infinity
+
+volumes:
+  node_modules:

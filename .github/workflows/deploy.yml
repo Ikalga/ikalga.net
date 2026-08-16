@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# デプロイの同時実行を防ぐ（実行中のデプロイは中断しない）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      # Node 22 同梱の npm 10 は依存解決で不具合が出るため、
+      # .devcontainer/Dockerfile と同じバージョンに揃える。
+      - name: Pin npm version
+        run: npm install -g npm@11.18.0
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Generate static site
+        run: npm run generate
+        env:
+          # 独自ドメインで公開する場合は未設定でよい（'/' が使われる）。
+          # <user>.github.io/<repo>/ で公開する場合はリポジトリ変数に /<repo>/ を設定する。
+          NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL }}
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

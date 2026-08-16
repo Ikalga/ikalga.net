@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+/*
+ * 要件 4.2 カラー
+ * 背景はブランドカラー1色（ごく薄い青緑）、テキストはダークグレー。
+ * TODO: 正式なカラーコードが決まったら差し替える（現在は暫定値）。
+ */
+@theme {
+  --color-brand: #e8f2f0;
+  --color-brand-strong: #4a8f85;
+  --color-ink: #33383a;
+  --color-ink-muted: #6b7376;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand);
+    color: var(--color-ink);
+  }
+}
+
+/* 要件 4.4: アニメーションは prefers-reduced-motion 設定時に無効化する */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
