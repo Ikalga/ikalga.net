@@ -1,4 +1,4 @@
-import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
@@ -6,6 +6,10 @@ export default defineContentConfig({
     content: defineCollection({
       type: 'page',
       source: '**/*.md',
+      schema: z.object({
+        // 職務経歴書の最終更新日（未設定なら表示しない）
+        updated: z.string().optional(),
+      }),
     }),
   },
 })
