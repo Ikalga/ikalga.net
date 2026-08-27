@@ -14,25 +14,20 @@ useSeoMeta({
 
 <template>
   <section class="my-auto py-10">
-    <p class="text-ink-muted text-[10.5px] font-semibold tracking-[0.2em] uppercase md:text-[11px]">
-      Portfolio
-    </p>
-
-    <h1 class="mt-5 text-[44px] leading-none font-bold tracking-[-0.035em] md:text-[68px]">
+    <h1 class="text-[44px] leading-none font-bold tracking-[-0.035em] md:text-[68px]">
       ikalga<span class="text-brand-strong">.net</span>
     </h1>
 
-    <p class="mt-6 text-[17px] font-medium md:text-[21px]">手を動かして、確かめながらつくる。</p>
+    <p class="mt-6 text-[17px] font-medium md:text-[21px]">ひとの役に立ってなんぼ。</p>
 
     <p class="text-ink-muted mt-5 max-w-[30em] text-[13.5px] leading-[2.05] md:text-[14.5px]">
-      Web
-      アプリケーションの設計から実装、運用までを担当するフルスタックエンジニアです。サーバーサイドの堅実さと、画面の手ざわり。その両方を行き来しながらプロダクトをつくっています。
+      ikalga.net は斑鳩勇人 (@ikalga) のポートフォリオサイトです。<br />
+      Webアプリケーションの設計から実装、インフラ構築・運用までを担当するフルスタックエンジニアです。
     </p>
 
-    <!-- TODO: href に実際の URL を設定する -->
     <ul class="mt-11 flex gap-3 md:gap-4">
       <li>
-        <RoundLink href="#" label="GitHub">
+        <RoundLink href="https://github.com/Ikalga" label="GitHub">
           <svg
             viewBox="0 0 24 24"
             class="size-[19px] md:size-[21px]"
@@ -46,7 +41,7 @@ useSeoMeta({
         </RoundLink>
       </li>
       <li>
-        <RoundLink href="#" label="X">
+        <RoundLink href="https://x.com/Ikalga" label="X">
           <svg
             viewBox="0 0 24 24"
             class="size-[17px] md:size-[19px]"
@@ -60,10 +55,11 @@ useSeoMeta({
         </RoundLink>
       </li>
       <li>
-        <RoundLink href="#" label="Bluesky">
+        <RoundLink href="https://bsky.app/profile/bsky.ikalga.net" label="Bluesky">
+          <!-- 蝶の字形は viewBox の上下に余白があるため、他より 2px 大きく描画して見た目を揃える -->
           <svg
             viewBox="0 0 24 24"
-            class="size-[19px] md:size-[21px]"
+            class="size-[21px] md:size-[23px]"
             fill="currentColor"
             aria-hidden="true"
           >
@@ -78,7 +74,7 @@ useSeoMeta({
           Misskey 公式のモノクロアイコン（https://misskey-hub.net/ja/brand-assets/）。
           アセットは CC BY-SA。fill="currentColor" は配布物のままの指定。
         -->
-        <RoundLink href="#" label="Misskey">
+        <RoundLink href="https://misskey.ikalga.net/@ikalga" label="Misskey">
           <svg
             viewBox="0 0 160 160"
             class="size-[22px] md:size-[24px]"
@@ -108,8 +104,8 @@ useSeoMeta({
           ロゴタイプ（square）は小さいと可読性が落ちるため、正円で「n」を使う方の指定に従っている。
           viewBox はアイソレーション（余白）込みの配布物のままなので、他のアイコンより大きく描画する。
         -->
-        <RoundLink href="#" label="note">
-          <svg viewBox="0 0 493 493" class="size-[46px] md:size-[52px]" aria-hidden="true">
+        <RoundLink href="https://note.com/ikalga7" label="note">
+          <svg viewBox="0 0 493 493" class="size-[40px] md:size-[45px]" aria-hidden="true">
             <path
               fill="#040000"
               d="m139.57,142.06c41.19,0,97.6-2.09,138.1-1.04,54.34,1.39,74.76,25.06,75.45,83.53.69,33.06,0,127.73,0,127.73h-58.79c0-82.83.35-96.5,0-122.6-.69-22.97-7.25-33.92-24.9-36.01-18.69-2.09-71.07-.35-71.07-.35v158.96h-58.79v-210.22Z"

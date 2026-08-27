@@ -4,15 +4,12 @@ const nav = [
   { to: '/about', label: 'about' },
   { to: '/resume', label: 'resume' },
 ]
-
-// 静的生成のため、ビルド時の年が焼き込まれる
-const year = new Date().getFullYear()
 </script>
 
 <template>
   <div class="flex min-h-screen flex-col">
     <header class="pt-8">
-      <div class="mx-auto flex w-full max-w-3xl items-baseline justify-between gap-6 px-6 md:px-8">
+      <div class="mx-auto flex w-full max-w-page items-baseline justify-between gap-6 px-6 md:px-8">
         <NuxtLink to="/" class="text-[15px] font-bold tracking-[-0.015em] md:text-[17px]">
           ikalga.net
         </NuxtLink>
@@ -33,17 +30,16 @@ const year = new Date().getFullYear()
     </header>
 
     <main class="flex flex-1 flex-col">
-      <div class="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 md:px-8">
+      <div class="mx-auto flex w-full max-w-page flex-1 flex-col px-6 md:px-8">
         <slot />
       </div>
     </main>
 
     <footer class="pt-16 pb-8">
       <div
-        class="text-ink-muted mx-auto flex w-full max-w-3xl items-center justify-between px-6 text-[10.5px] tracking-[0.09em] md:px-8 md:text-[11px]"
+        class="text-ink-muted mx-auto w-full max-w-page px-6 text-center text-[10.5px] tracking-[0.09em] md:px-8 md:text-[11px]"
       >
-        <span>© {{ year }} ikalga</span>
-        <span>Built with Nuxt</span>
+        © ikalga
       </div>
     </footer>
   </div>

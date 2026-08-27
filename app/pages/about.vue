@@ -10,45 +10,49 @@ useSeoMeta({
   twitterCard: 'summary',
 })
 
-// TODO: [ ] の項目を実際の内容に置き換える
 const skills = [
-  { label: '言語', items: ['TypeScript', 'JavaScript', '[主要言語]', '[主要言語]'] },
-  { label: 'フレームワーク', items: ['Nuxt (Vue 3)', 'Vue.js', '[サーバーサイド FW]'] },
-  { label: 'インフラ・ツール', items: ['Docker', 'GitHub Actions', 'Git', '[クラウド]'] },
-  { label: 'その他', items: ['Tailwind CSS', 'ESLint / Prettier', '[DB]'] },
+  { label: '言語', items: ['Python', 'PHP', 'Java', 'TypeScript', 'JavaScript'] },
+  { label: 'フレームワーク', items: ['Django', 'Symfony', 'Nuxt', 'Vue.js'] },
+  { label: 'インフラ・ツール', items: ['AWS', 'Cloudflare', 'nginx', 'Git', 'GitHub', 'Docker'] },
+  { label: 'その他', items: ['PostgreSQL', 'Redis', 'Tailwind CSS'] },
 ]
 
 const works = [
   {
     title: 'ikalga.net',
     description:
-      'このポートフォリオサイト。静的生成した HTML を GitHub Pages に配信し、職務経歴は Markdown から生成しています。',
+      '当ポートフォリオサイト。静的生成した HTML を GitHub Pages に配信し、職務経歴は Markdown から生成しています。',
     stack: ['Nuxt 4', 'TypeScript', 'Tailwind CSS'],
     linkLabel: 'GitHub',
-    href: '#',
-    placeholder: false,
+    href: 'https://github.com/Ikalga/ikalga.net',
   },
   {
-    title: '[プロジェクト名]',
-    description: '[何を解決するものか、どこを担当したかを 2 行程度で]',
-    stack: ['[技術]', '[技術]'],
+    title: 'csff-japanese-improved',
+    description:
+      'インディーゲーム "Card Survival: Fantasy Forest" の日本語化 MOD。ゲーム内のテキストを翻訳MODと、翻訳用のスクリプト・ツールを配布しています。',
+    stack: ['Python'],
     linkLabel: 'GitHub',
-    href: '#',
-    placeholder: true,
+    href: 'https://github.com/Ikalga/csff-japanese-improved',
   },
   {
-    title: '[プロジェクト名]',
-    description: '[何を解決するものか、どこを担当したかを 2 行程度で]',
-    stack: ['[技術]', '[技術]'],
-    linkLabel: '外部リンク',
-    href: '#',
-    placeholder: true,
+    title: 'misskey.ikalga.net',
+    description: 'Misskey インスタンス。サーバー構築・運用の学習目的で立ち上げました。',
+    stack: ['node.js', 'Docker', 'Cloudflare'],
+    linkLabel: 'GitHub',
+    href: 'https://misskey.ikalga.net/',
   },
 ]
 
-const contacts = [
-  { label: 'メール', value: '[メールアドレス]', href: '#' },
-  { label: 'X（DM）', value: '@[ユーザー名]', href: '#' },
+type Contact = {
+  label: string
+  value: string
+  /** 未設定の場合は a タグにせず、テキストとして表示する（メールはスパム避けのため設定しない） */
+  href?: string
+}
+
+const contacts: Contact[] = [
+  { label: 'メール', value: 'a.ikaluga.06 [at] gmail.com' },
+  { label: 'X（DM）', value: '@Ikalga', href: 'https://x.com/Ikalga' },
 ]
 
 /** 未入力のプレースホルダー（[ ] で囲まれた文字列）かどうか */
@@ -62,17 +66,15 @@ const isPlaceholder = (value: string) => value.startsWith('[')
     <div
       class="text-ink-muted mt-8 space-y-4 text-[13.5px] leading-[2.05] md:mt-10 md:text-[14.5px]"
     >
+      <p><strong class="text-ink font-bold">斑鳩勇人</strong>（@ikalga）</p>
+      <p>普段は関東某所で、とあるポータルサイトのスクラムマスターやSREエンジニアをやっています。</p>
       <p>
-        <strong class="text-ink font-bold">ikalga</strong>（<span class="todo">[氏名]</span
-        >）。<span class="todo">[勤務地]</span>を拠点に、Web
-        アプリケーションの開発をしているフルスタックエンジニアです。
+        10年以上の間、Webアプリケーションの設計・実装・運用に携わってきました。<br />
+        要求定義から総合テストまで、インフラ設計からフロントエンド実装まで、幅広く担当してきた経験を活かし、現在はチームの開発プロセス改善や運用の自動化などに取り組んでいます。
       </p>
-      <p class="max-w-[34em]">
-        要件を固めるところから、設計・実装・リリース後の運用までを一通り担当してきました。とくに、仕様のあいまいさを実装で早めに潰していく進め方と、あとから読む人が迷わないコードを書くことを大事にしています。
-      </p>
-      <p class="max-w-[34em]">
-        最近は TypeScript と Nuxt
-        を中心に、個人でも小さなプロダクトをつくって公開しています。このサイト自体もそのひとつです。
+      <p>
+        趣味は自転車ロードレース、読書、インディーゲームなど。<br />
+        インディーゲームについては、最近はプログラミングスキルを活かしてのMOD作成等にも手を出しています。
       </p>
     </div>
 
@@ -107,13 +109,10 @@ const isPlaceholder = (value: string) => value.startsWith('[')
           :key="work.title + work.linkLabel"
           class="border-rule bg-surface hover:border-brand-strong/45 flex flex-col gap-2.5 rounded-[3px] border p-5 transition-colors duration-300 hover:bg-white/60"
         >
-          <h3 class="text-[15px] font-bold md:text-[15.5px]" :class="{ todo: work.placeholder }">
+          <h3 class="text-[15px] font-bold md:text-[15.5px]">
             {{ work.title }}
           </h3>
-          <p
-            class="text-ink-muted flex-1 text-[12.5px] leading-[1.85] md:text-[13px]"
-            :class="{ todo: work.placeholder }"
-          >
+          <p class="text-ink-muted flex-1 text-[12.5px] leading-[1.85] md:text-[13px]">
             {{ work.description }}
           </p>
           <ul class="flex flex-wrap gap-1.5">
@@ -125,7 +124,6 @@ const isPlaceholder = (value: string) => value.startsWith('[')
               {{ tech }}
             </li>
           </ul>
-          <!-- TODO: href に実際のリンク先を設定する -->
           <a
             :href="work.href"
             target="_blank"
@@ -165,14 +163,14 @@ const isPlaceholder = (value: string) => value.startsWith('[')
             {{ contact.label }}
           </dt>
           <dd class="mt-2 text-[13.5px] leading-[1.9] md:mt-0 md:text-[14px]">
-            <!-- TODO: href と表示文字列を実際の連絡先に置き換える -->
-            <a :href="contact.href" class="todo">{{ contact.value }}</a>
+            <a v-if="contact.href" :href="contact.href">{{ contact.value }}</a>
+            <template v-else>{{ contact.value }}</template>
           </dd>
         </div>
       </dl>
       <p class="text-ink-muted mt-4 text-[12px] leading-[1.9] md:text-[12.5px]">
-        お仕事のご相談・カジュアル面談などはこちらまで。その他の SNS は
-        <NuxtLink to="/" class="text-brand-strong">home</NuxtLink> に掲載しています。
+        メールアドレスは [at] を@に置き換えてください。<br />
+        その他の SNS は<NuxtLink to="/" class="text-brand-strong">home</NuxtLink> に掲載しています。
       </p>
     </div>
   </section>
