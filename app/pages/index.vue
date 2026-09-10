@@ -20,9 +20,10 @@ useSeoMeta({
 
     <p class="mt-6 text-[17px] font-medium md:text-[21px]">ひとの役に立ってなんぼ。</p>
 
-    <p class="text-ink-muted mt-5 max-w-[30em] text-[13.5px] leading-[2.05] md:text-[14.5px]">
+    <p class="text-ink-muted mt-5 max-w-[36em] text-[13.5px] leading-[2.05] md:text-[14.5px]">
       ikalga.net は斑鳩勇人 (@ikalga) のポートフォリオサイトです。<br />
-      Webアプリケーションの設計から実装、インフラ構築・運用までを担当するフルスタックエンジニアです。
+      現職では10年以上、「エンジニアたるもの他人の役に立ってなんぼ」を口癖に、
+      Webアプリケーションの設計から実装、インフラ構築・運用まで担当するフルスタックエンジニアとして活動しています。
     </p>
 
     <ul class="mt-11 flex gap-3 md:gap-4">

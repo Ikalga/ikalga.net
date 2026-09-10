@@ -13,7 +13,10 @@ useSeoMeta({
 const skills = [
   { label: '言語', items: ['Python', 'PHP', 'Java', 'TypeScript', 'JavaScript'] },
   { label: 'フレームワーク', items: ['Django', 'Symfony', 'Nuxt', 'Vue.js'] },
-  { label: 'インフラ・ツール', items: ['AWS', 'Cloudflare', 'nginx', 'Git', 'GitHub', 'Docker'] },
+  {
+    label: 'インフラ・ツール',
+    items: ['AWS', 'Cloudflare', 'nginx', 'SaltStack', 'Git', 'GitHub', 'Docker'],
+  },
   { label: 'その他', items: ['PostgreSQL', 'Redis', 'Tailwind CSS'] },
 ]
 
@@ -37,8 +40,8 @@ const works = [
   {
     title: 'misskey.ikalga.net',
     description: 'Misskey インスタンス。サーバー構築・運用の学習目的で立ち上げました。',
-    stack: ['node.js', 'Docker', 'Cloudflare'],
-    linkLabel: 'GitHub',
+    stack: ['Node.js', 'Docker', 'Cloudflare'],
+    linkLabel: 'misskey',
     href: 'https://misskey.ikalga.net/',
   },
 ]
@@ -79,7 +82,7 @@ const isPlaceholder = (value: string) => value.startsWith('[')
     </div>
 
     <div class="mt-13 md:mt-17">
-      <SectionHeading title="スキルセット" en="Skills" />
+      <SectionHeading id="skills" title="スキルセット" en="Skills" />
       <dl class="mt-1">
         <div
           v-for="skill in skills"
@@ -102,7 +105,7 @@ const isPlaceholder = (value: string) => value.startsWith('[')
     </div>
 
     <div class="mt-13 md:mt-17">
-      <SectionHeading title="制作実績" en="Works" />
+      <SectionHeading id="works" title="制作実績" en="Works" />
       <div class="mt-5 grid gap-4 md:mt-6 md:grid-cols-2">
         <article
           v-for="work in works"
@@ -150,7 +153,7 @@ const isPlaceholder = (value: string) => value.startsWith('[')
     </div>
 
     <div class="mt-13 md:mt-17">
-      <SectionHeading title="連絡先" en="Contact" />
+      <SectionHeading id="contact" title="連絡先" en="Contact" />
       <dl class="mt-1">
         <div
           v-for="contact in contacts"

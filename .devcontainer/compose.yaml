@@ -15,6 +15,12 @@ services:
       # Windows ホストのバインドマウントではファイル変更イベントが
       # コンテナ内に伝播しないため、Vite の watch をポーリングに切り替える。
       VITE_USE_POLLING: 'true'
+      # Nuxt Content の content/ 監視は chokidar が直接おこなっており、
+      # モジュール側にポーリングの設定項目がない。chokidar 5 はこの環境変数を
+      # 見てくれるので、ここで有効にする（これが無いと content/*.md を編集しても
+      # dev サーバーに反映されない）。
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: '300'
     command: sleep infinity
 
 volumes:

@@ -53,20 +53,19 @@ useSeoMeta({
   margin-top: 44px;
   padding-top: 14px;
   border-top: 1px solid var(--color-rule);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
 }
 
 .md :deep(h3) {
   margin-top: 28px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .md :deep(h4) {
-  margin-top: 18px;
-  color: var(--color-ink-muted);
-  font-size: 12.5px;
+  margin-top: 26px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -111,6 +110,15 @@ useSeoMeta({
   color: var(--color-brand-strong);
 }
 
+/*
+ * Nuxt Content は見出しの中身をアンカーリンク（<h2><a href="#..."></a></h2>）で包む。
+ * 上の a の指定がそのまま効くと見出しが全部アクセント色になってしまうため、
+ * 見出し内のリンクだけ本文の色を継承させる。
+ */
+.md :deep(:is(h2, h3, h4) a) {
+  color: inherit;
+}
+
 .md :deep(strong) {
   font-weight: 700;
 }
@@ -118,15 +126,15 @@ useSeoMeta({
 @media (min-width: 768px) {
   .md :deep(h2) {
     margin-top: 56px;
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .md :deep(h3) {
-    font-size: 14.5px;
+    font-size: 16.5px;
   }
 
   .md :deep(h4) {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .md :deep(p),
