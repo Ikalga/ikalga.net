@@ -1,0 +1,66 @@
+<!--
+  public/og.png の生成元。内容を変えたらこのファイルを編集して再生成する。
+
+  docker run --rm -v "<このディレクトリの絶対パス>:/work" -w /work     --entrypoint chromium-browser zenika/alpine-chrome     --headless --no-sandbox --disable-gpu --hide-scrollbars     --force-device-scale-factor=1 --window-size=1200,630     --virtual-time-budget=10000 --screenshot=/work/og.png file:///work/og.html
+
+  生成された og.png を public/ にコピーする。
+  フォントは Google Fonts から取得するため、生成時はネットワークが必要。
+-->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 96px;
+        background: #e8f2f0;
+        color: #33383a;
+        font-family: 'Schibsted Grotesk', 'Zen Kaku Gothic New', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .name {
+        font-size: 104px;
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1;
+      }
+      .tld {
+        color: #4a8f85;
+      }
+      .tagline {
+        margin-top: 40px;
+        font-size: 40px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+      }
+      .meta {
+        margin-top: 44px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(51, 56, 58, 0.13);
+        font-size: 23px;
+        line-height: 1.6;
+        color: #6b7376;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="name">ikalga<span class="tld">.net</span></p>
+    <p class="tagline">ひとの役に立ってなんぼ。</p>
+  </body>
+</html>

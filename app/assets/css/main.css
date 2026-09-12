@@ -1,21 +1,55 @@
+/*
+ * Google Fonts の読み込み（要件 4.5）。
+ * CSS の仕様上 @import は他のルールより前に置く必要があり、
+ * `@import 'tailwindcss'` は展開されて大量のルールになるため、必ずこの順序を保つこと。
+ */
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
 @import 'tailwindcss';
 
 /*
- * 要件 4.2 カラー
- * 背景はブランドカラー1色（ごく薄い青緑）、テキストはダークグレー。
- * TODO: 正式なカラーコードが決まったら差し替える（現在は暫定値）。
+ * 要件 4.2 カラー / 4.5 タイポグラフィ
+ * 背景はブランドカラー1色（ごく薄い青緑）、アクセントは同系のやや濃い青緑1色。
  */
-@theme {
+/*
+ * `static` を付けると、ユーティリティから参照されていないトークンも出力に残る。
+ * コンポーネントのスコープ付き <style> から var(--color-rule) 等を直接使うため。
+ */
+@theme static {
   --color-brand: #e8f2f0;
   --color-brand-strong: #4a8f85;
   --color-ink: #33383a;
   --color-ink-muted: #6b7376;
+  --color-rule: rgba(51, 56, 58, 0.13);
+  --color-surface: rgba(255, 255, 255, 0.42);
+
+  /*
+   * ページ全体の最大幅。左右のパディング（px-6 / md:px-8）を含む値なので、
+   * 実際のコンテンツ幅はここから PC で 64px、SP で 48px 引いたものになる。
+   * 使うのは layouts/default.vue の max-w-page。
+   */
+  --container-page: 56rem;
+
+  /* 欧文優先 → 和文へフォールバックさせ、1つのスタックで両方をまかなう */
+  --font-sans:
+    'Schibsted Grotesk', 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo',
+    sans-serif;
 }
 
 @layer base {
   body {
     background-color: var(--color-brand);
     color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+
+  /* Tailwind の preflight がリンクの色を inherit にするため、ここで既定の挙動を与える */
+  a {
+    transition: color 0.25s ease;
+  }
+
+  a:hover {
+    color: var(--color-brand-strong);
   }
 }
 
