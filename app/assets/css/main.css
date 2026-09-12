@@ -53,16 +53,6 @@
   }
 }
 
-@layer components {
-  /*
-   * 未入力の箇所を示す仮のマーカー。実際の内容が入ったら、この定義ごと削除する。
-   */
-  .todo {
-    color: var(--color-ink-muted);
-    border-bottom: 1px dashed color-mix(in srgb, var(--color-ink) 30%, transparent);
-  }
-}
-
 /* 要件 4.4: アニメーションは prefers-reduced-motion 設定時に無効化する */
 @media (prefers-reduced-motion: reduce) {
   *,

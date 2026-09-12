@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const description =
-  'ikalga のポートフォリオサイト。Web アプリケーションの設計から実装、運用までを担当するフルスタックエンジニアです。'
-
-useSeoMeta({
+usePageSeo({
   title: 'ikalga.net',
-  description,
-  ogTitle: 'ikalga.net',
-  ogDescription: description,
-  ogType: 'website',
-  twitterCard: 'summary',
+  description:
+    'ikalga.net は斑鳩勇人のポートフォリオサイトです。フルスタックエンジニアとして活動しています。',
 })
 </script>
 

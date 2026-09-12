@@ -1,5 +1,9 @@
 import tailwindcss from '@tailwindcss/vite'
 
+// 公開 URL。OGP の og:image / og:url と canonical は絶対 URL でないと効かないため、
+// ビルド時にここから組み立てる。
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://ikalga.net'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -10,13 +14,20 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   app: {
-    // 独自ドメイン (ikalga.net) で公開する場合は '/' のままでよい。
-    // <user>.github.io/<repo>/ で公開する場合は NUXT_APP_BASE_URL=/ikalga.net/ を指定する。
-    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    // 独自ドメイン (ikalga.net) のルートで公開するため '/' 固定。
+    baseURL: '/',
     head: {
       htmlAttrs: { lang: 'ja' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      link: [
+        // PNG のファビコンを使うので link で明示する必要がある。
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      ],
     },
+  },
+
+  runtimeConfig: {
+    public: { siteUrl },
   },
 
   // GitHub Pages 向けの静的出力（.nojekyll / 404.html を自動生成する）

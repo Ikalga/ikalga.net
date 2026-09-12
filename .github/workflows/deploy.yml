@@ -42,10 +42,6 @@ jobs:
 
       - name: Generate static site
         run: npm run generate
-        env:
-          # 独自ドメインで公開する場合は未設定でよい（'/' が使われる）。
-          # <user>.github.io/<repo>/ で公開する場合はリポジトリ変数に /<repo>/ を設定する。
-          NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL }}
 
       - uses: actions/upload-pages-artifact@v5
         with:

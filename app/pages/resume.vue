@@ -3,15 +3,10 @@ const { data: page } = await useAsyncData('resume', () =>
   queryCollection('content').path('/resume').first(),
 )
 
-const description = 'ikalga の職務経歴書。経験した技術・業務領域と職務経歴をまとめています。'
-
-useSeoMeta({
+usePageSeo({
   title: `${page.value?.title ?? 'resume'} | ikalga.net`,
-  description,
-  ogTitle: `${page.value?.title ?? 'resume'} | ikalga.net`,
-  ogDescription: description,
+  description: 'ikalga の職務経歴書。経験した技術・業務領域と職務経歴をまとめています。',
   ogType: 'article',
-  twitterCard: 'summary',
 })
 </script>
 

@@ -1,13 +1,8 @@
 <script setup lang="ts">
-const description = 'ikalga のプロフィール、スキルセット、制作実績、連絡先。'
-
-useSeoMeta({
+usePageSeo({
   title: 'about | ikalga.net',
-  description,
-  ogTitle: 'about | ikalga.net',
-  ogDescription: description,
+  description: 'ikalga のプロフィール、スキルセット、制作実績、連絡先。',
   ogType: 'profile',
-  twitterCard: 'summary',
 })
 
 const skills = [
@@ -39,7 +34,7 @@ const works = [
   },
   {
     title: 'misskey.ikalga.net',
-    description: 'Misskey インスタンス。サーバー構築・運用の学習目的で立ち上げました。',
+    description: 'Misskey インスタンス。サーバー構築・運用の経験を積むために立ち上げています。',
     stack: ['Node.js', 'Docker', 'Cloudflare'],
     linkLabel: 'misskey',
     href: 'https://misskey.ikalga.net/',
@@ -57,9 +52,6 @@ const contacts: Contact[] = [
   { label: 'メール', value: 'a.ikaluga.06 [at] gmail.com' },
   { label: 'X（DM）', value: '@Ikalga', href: 'https://x.com/Ikalga' },
 ]
-
-/** 未入力のプレースホルダー（[ ] で囲まれた文字列）かどうか */
-const isPlaceholder = (value: string) => value.startsWith('[')
 </script>
 
 <template>
@@ -97,7 +89,7 @@ const isPlaceholder = (value: string) => value.startsWith('[')
           <dd class="mt-2 text-[13.5px] leading-[1.9] md:mt-0 md:text-[14px]">
             <template v-for="(item, index) in skill.items" :key="item + index">
               <span v-if="index > 0" class="text-rule mx-2" aria-hidden="true">/</span>
-              <span :class="{ todo: isPlaceholder(item) }">{{ item }}</span>
+              <span>{{ item }}</span>
             </template>
           </dd>
         </div>
