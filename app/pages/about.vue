@@ -27,7 +27,7 @@ const works = [
   {
     title: 'csff-japanese-improved',
     description:
-      'インディーゲーム "Card Survival: Fantasy Forest" の日本語化 MOD。ゲーム内のテキストを翻訳MODと、翻訳用のスクリプト・ツールを配布しています。',
+      'インディーゲーム "Card Survival: Fantasy Forest" の日本語化 MOD。ゲーム内のテキストを翻訳するMODと、翻訳用のスクリプト・ツールを配布しています。',
     stack: ['Python'],
     linkLabel: 'GitHub',
     href: 'https://github.com/Ikalga/csff-japanese-improved',
@@ -36,7 +36,7 @@ const works = [
     title: 'misskey.ikalga.net',
     description: 'Misskey インスタンス。サーバー構築・運用の経験を積むために立ち上げています。',
     stack: ['Node.js', 'Docker', 'Cloudflare'],
-    linkLabel: 'misskey',
+    linkLabel: 'Misskey',
     href: 'https://misskey.ikalga.net/',
   },
 ]

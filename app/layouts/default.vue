@@ -18,7 +18,7 @@ const nav = [
             <li v-for="item in nav" :key="item.to">
               <NuxtLink
                 :to="item.to"
-                class="nav-link text-ink-muted inline-block text-[12.5px] tracking-[0.07em] md:text-[13px]"
+                class="nav-link text-ink-muted hover:text-brand-strong inline-block text-[12.5px] tracking-[0.07em] md:text-[13px]"
                 exact-active-class="is-current"
               >
                 {{ item.label }}
