@@ -9,6 +9,8 @@
 /*
  * 要件 4.2 カラー / 4.5 タイポグラフィ
  * 背景はブランドカラー1色（ごく薄い青緑）、アクセントは同系のやや濃い青緑1色。
+ * brand-strong / ink-muted は小さい文字にも使うため、背景 brand に対して
+ * WCAG AA のコントラスト比 4.5:1 以上を保つようにする。
  */
 /*
  * `static` を付けると、ユーティリティから参照されていないトークンも出力に残る。
@@ -16,9 +18,9 @@
  */
 @theme static {
   --color-brand: #e8f2f0;
-  --color-brand-strong: #4a8f85;
+  --color-brand-strong: #3d776e;
   --color-ink: #33383a;
-  --color-ink-muted: #6b7376;
+  --color-ink-muted: #636b6e;
   --color-rule: rgba(51, 56, 58, 0.13);
   --color-surface: rgba(255, 255, 255, 0.42);
 
